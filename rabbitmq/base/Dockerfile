@@ -16,8 +16,3 @@ RUN yum install -y  http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.5/rabb
 
 # enable plugins
 RUN /usr/sbin/rabbitmq-plugins enable rabbitmq_mqtt rabbitmq_stomp rabbitmq_management  rabbitmq_management_agent rabbitmq_management_visualiser rabbitmq_federation rabbitmq_federation_management sockjs
-
-#CMD /usr/sbin/rabbitmq-server
-
-# Allow triggerable events on the first time running
-RUN touch /tmp/firsttimerunning
