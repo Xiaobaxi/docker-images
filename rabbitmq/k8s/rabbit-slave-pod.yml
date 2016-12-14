@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rabbitmq-slave
+  labels:
+    app: rabbitmq-slave
+spec:
+  containers:
+  - name: rabbitmq-slave
+    image: docker.hikvision.com.cn/pandora/rabbit-server
+    imagePullPolicy: Always
+    env:
+    - name: CLUSTERED
+      value: "true"
+    - name: CLUSTER_WITH
+      value: "rabbitmq-master"
+    - name: RAM_NODE
+      value: "true"
+    ports:
+    - containerPort: 4369
+      name: epmd
+    - containerPort: 5672
+      name: rabbitmq
+    - containerPort: 15672
+      name: management
+    - containerPort: 5671
+      name: ssl
+    - containerPort: 25672
+      name: erlang

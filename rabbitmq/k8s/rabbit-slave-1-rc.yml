@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: rabbitmq-slave-1
+  labels:
+    app: rabbitmq-slave-1
+spec:
+  replicas: 1
+  selector:
+    app: rabbitmq-slave-1
+  template:
+    metadata:
+      name: rabbitmq-slave-1
+      labels:
+        app: rabbitmq-slave-1
+      annotations:
+        pod.beta.kubernetes.io/hostname: rabbitmq-slave-1
+    spec:
+      containers:
+      - name: rabbitmq-slave-1
+        image: docker.hikvision.com.cn/pandora/rabbit-server
+        imagePullPolicy: Always
+        env:
+        - name: CLUSTERED
+          value: "true"
+        - name: CLUSTER_WITH
+          value: "rabbitmq-master"
+        - name: RAM_NODE
+          value: "true"
+        ports:
+        - containerPort: 5672
+          name: rabbitmq
+        - containerPort: 15672
+          name: management
+        - containerPort: 5671
+          name: ssl
+        - containerPort: 4369
+          name: epmd
+        - containerPort: 25672
+          name: erlang

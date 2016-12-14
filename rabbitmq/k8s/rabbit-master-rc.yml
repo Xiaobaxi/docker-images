@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: rabbitmq-master
+  labels:
+    app: rabbitmq-master
+spec:
+  replicas: 1
+  selector:
+    app: rabbitmq-master
+  template:
+    metadata:
+      name: rabbitmq-master
+      labels:
+        app: rabbitmq-master
+      annotations:
+        pod.beta.kubernetes.io/hostname: rabbitmq-master
+    spec:
+      containers:
+      - name: rabbitmq-master
+        image: docker.hikvision.com.cn/pandora/rabbit-server
+        imagePullPolicy: Always
+        env:
+        - name: HOST_NAME
+          value: "rabbitmq-master"
+        ports:
+        - containerPort: 4369
+          name: epmd
+        - containerPort: 5672
+          name: rabbitmq
+        - containerPort: 15672
+          name: management
+        - containerPort: 5671
+          name: ssl
+        - containerPort: 25672
+          name: erlang

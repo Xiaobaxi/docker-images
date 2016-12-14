@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq-master
+  labels:
+    app: rabbitmq-master
+spec:
+  ports:
+    - port: 5672
+      name: rabbitmq
+    - port: 4369
+      name: epmd
+    - port: 25672
+      name: erlang
+    - port: 15672
+      name: management
+      nodePort: 31606
+    - port: 5671
+      name: ssl
+      nodePort: 32718
+  selector:
+    app: rabbitmq-master
+  type: NodePort
