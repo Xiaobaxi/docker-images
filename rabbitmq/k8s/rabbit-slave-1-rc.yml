@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: rabbitmq-slave-1
-        image: docker.hikvision.com.cn/pandora/rabbit-server
+        image: cloud/rabbit-server
         imagePullPolicy: Always
         env:
         - name: CLUSTERED

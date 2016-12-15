@@ -18,11 +18,8 @@ spec:
     spec:
       containers:
       - name: rabbitmq-master
-        image: docker.hikvision.com.cn/pandora/rabbit-server
+        image: cloud/rabbit-server
         imagePullPolicy: Always
-        env:
-        - name: HOST_NAME
-          value: "rabbitmq-master"
         ports:
         - containerPort: 4369
           name: epmd
