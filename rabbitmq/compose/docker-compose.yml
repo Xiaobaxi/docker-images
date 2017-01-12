@@ -1,5 +1,5 @@
 rabbit1:
-  image: cloud/rabbitclusternode
+  image: registry.cn-hangzhou.aliyuncs.com/xiaobaxi/docker/rabbitclusternode
   hostname: rabbit1
   cap_add:
     - ALL
@@ -12,7 +12,7 @@ rabbit1:
     - "15672:15672"
 
 rabbit2:
-  image: cloud/rabbitclusternode
+  image: registry.cn-hangzhou.aliyuncs.com/xiaobaxi/docker/rabbitclusternode
   hostname: rabbit2
   cap_add:
     - ALL
@@ -31,7 +31,7 @@ rabbit2:
       - "15673:15672"
 
 rabbit3:
-  image: cloud/rabbitclusternode
+  image: registry.cn-hangzhou.aliyuncs.com/xiaobaxi/docker/rabbitclusternode
   hostname: rabbit3
   cap_add:
     - ALL

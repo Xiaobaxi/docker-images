@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: rabbitmq-slave-2
-        image: cloud/rabbit-server
+        image: registry.cn-hangzhou.aliyuncs.com/xiaobaxi/docker/rabbit-server
         imagePullPolicy: Always
         env:
         - name: CLUSTERED
