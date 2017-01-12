@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: portal-minio
+  labels:
+    app: portal-minio
+spec:
+  replicas: 1
+  selector:
+    app: portal-minio
+  template:
+    metadata:
+      name: portal-minio
+      labels:
+        app: portal-minio
+    spec:
+      containers:
+      - name: protal-minio
+        image: registry.cn-hangzhou.aliyuncs.com/xiaobaxi/docker/minio
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: "/opt/export"
+          name: export
+        ports:
+        - containerPort: 9000
+          name: minio
+      volumes:
+      - name: minio
+        hostPath:
+          path: "/opt/export"
