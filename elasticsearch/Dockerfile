@@ -9,7 +9,7 @@ RUN groupadd -r es \
 COPY elasticsearch-2.4.0 /home/es/elasticsearch
 
 RUN chown -R es:es /home/es \
-    && chmod 777 /home/es/elasticsearch
+    && chmod -R 777 /home/es/elasticsearch
 
 
 WORKDIR /home/es/elasticsearch/bin
