@@ -1,0 +1,12 @@
+elasticsearch:
+  image: registry.cn-hangzhou.aliyuncs.com/xiaobaxi/docker/elasticsearch
+  container_name: elasticsearch
+  hostname: elasticsearch
+  ports:
+    - "9200:9200"
+    - "9300:9300"
+  cap_add:
+    - ALL
+    - NET_ADMIN
+    - SYS_ADMIN
+  
