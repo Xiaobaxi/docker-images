@@ -1,0 +1,13 @@
+version: '2'
+services:
+  redis:
+    image: registry.cn-hangzhou.aliyuncs.com/xiaobaxi/docker/redis
+    container_name: redis
+    hostname: redis
+    ports:
+      - "6379:6379"
+      - "16379:16379"
+    cap_add:
+      - ALL
+      - NET_ADMIN
+      - SYS_ADMIN

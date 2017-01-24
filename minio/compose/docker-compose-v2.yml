@@ -1,0 +1,14 @@
+version: '2'
+services:
+  minio:
+    image: registry.cn-hangzhou.aliyuncs.com/xiaobaxi/docker/minio
+    container_name: minio
+    hostname: minio
+    cap_add:
+      - ALL
+      - NET_ADMIN
+      - SYS_ADMIN
+    ports: 
+      - "9000:9000"
+    volumes:
+      - /export:/opt/export

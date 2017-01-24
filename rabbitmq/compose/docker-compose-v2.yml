@@ -1,0 +1,53 @@
+version: '2'
+services:
+  rabbit1:
+    image: registry.cn-hangzhou.aliyuncs.com/xiaobaxi/docker/rabbitclusternode
+    hostname: rabbit1
+    cap_add:
+      - ALL
+      - NET_ADMIN
+      - SYS_ADMIN
+    ports:
+      - "1883:1883"
+      - "5672:5672"
+      - "8883:8883"
+      - "15672:15672"
+
+  rabbit2:
+    image: registry.cn-hangzhou.aliyuncs.com/xiaobaxi/docker/rabbitclusternode
+    hostname: rabbit2
+    cap_add:
+      - ALL
+      - NET_ADMIN
+      - SYS_ADMIN
+    links:
+      - rabbit1
+    environment: 
+      - CLUSTERED=true
+      - CLUSTER_WITH=rabbit1
+      - RAM_NODE=true
+    ports:
+      - "1884:1883"
+      - "5673:5672"
+      - "8884:8883"
+      - "15673:15672"
+
+  rabbit3:
+    image: registry.cn-hangzhou.aliyuncs.com/xiaobaxi/docker/rabbitclusternode
+    hostname: rabbit3
+    cap_add:
+      - ALL
+      - NET_ADMIN
+      - SYS_ADMIN
+    links:
+      - rabbit1
+      - rabbit2
+    environment: 
+      - CLUSTERED=true
+      - CLUSTER_WITH=rabbit1   
+    ports:
+      - "1885:1883"
+      - "5674:5672"
+      - "8885:8883"
+      - "15674:15672"
+
